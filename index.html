@@ -11,7 +11,7 @@
   <style>
   :root {
     --bg: #0b0f1a;
-    --card: rgba(255, 255, 255, 0.85); /* light, semi-transparent card */
+    --card: rgba(255, 255, 255, 0.85); /* light semi-transparent card */
     --muted: #555;    /* muted gray for card body text */
     --text: #ffffff;  /* white text for hero/outside cards */
     --card-text: #222; /* dark text for inside cards */
@@ -31,13 +31,7 @@
     line-height: 1.5;
     position: relative;
   }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35); /* dark overlay */
-    z-index: -1;
-  }
+  /* Removed dark overlay */
   h1, h2, h3, p, a {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   }
