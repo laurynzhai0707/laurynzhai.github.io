@@ -22,9 +22,14 @@
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
-      background: radial-gradient(1200px 600px at 10% -10%, #172135 10%, transparent 50%),
-                  radial-gradient(1000px 500px at 110% 10%, #16243a 10%, transparent 50%),
-                  var(--bg);
+    
+      /* Replace the gradient with your image */
+      background-image: url("image.jpg");
+      background-size: cover;         /* fill the whole page */
+      background-repeat: no-repeat;   /* no tiling */
+      background-attachment: fixed;   /* stay fixed when scrolling */
+      background-position: center;    /* center the image */
+    
       line-height: 1.5;
     }
     a { color: var(--accent); text-decoration: none; }
