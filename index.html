@@ -114,6 +114,46 @@
 
   @media (max-width: 900px){ .hero { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 640px){ .grid { grid-template-columns: 1fr; } nav { display:none; } }
+  /* ===== CLEANUP: remove any leftover local shading overlays ===== */
+header::before,
+.hero > div:first-child::before,
+footer::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* ===== OUTSIDE-TEXT: subtle, consistent readability ===== */
+/* Name, nav, hero headline, section headings = light black + gentle shade */
+.brand strong,
+nav a,
+.hero h1,
+h2,
+footer,
+footer a {
+  color: #222 !important;
+  text-shadow: 0 1.5px 3px rgba(0,0,0,0.25) !important; /* soft, not aggressive */
+}
+
+/* Subheading line (“Corporate Planning @ …”) = clear light black, no shadow */
+.sub { color: #222 !important; text-shadow: none !important; }
+
+/* Header tag matches card style (light frosted + dark text) */
+.tag {
+  background: rgba(255,255,255,0.72) !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  color: #222 !important;
+}
+
+/* Cards stay light with dark text; body copy muted */
+.card { background: rgba(255,255,255,0.72) !important; color: #222 !important; }
+.card p { color: #555 !important; }
+
+/* Buttons: keep primary blue, neutral button readable */
+.btn { color: #222 !important; border-color: rgba(0,0,0,0.15) !important; background: rgba(0,0,0,0.05) !important; }
+.btn.primary { color: #fff !important; } /* CTA stays white text */
+
+/* Links (incl. email) use same color as surrounding text */
+a[href^="mailto:"], .card a, footer a { color: #222 !important; text-decoration: none; }
 </style>
 </head>
 <body>
