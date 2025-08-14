@@ -13,7 +13,7 @@
     --bg: #0b0f1a;
     --card: rgba(255, 255, 255, 0.72);
     --muted: #555;
-    --text-dark: #222;     /* light black text */
+    --text: #ffffff;
     --card-text: #222;
     --accent1: #3b82f6;
     --accent2: #2563eb;
@@ -25,7 +25,7 @@
   body {
     margin: 0;
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text-dark);
+    color: var(--text);
     background-image: url("image.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -34,30 +34,16 @@
     line-height: 1.5;
   }
 
-  /* === HEADER === */
+  a { color: var(--text); text-decoration: none; opacity: 0.9; }
+  a:hover { opacity: 1; text-decoration: underline; }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
   header { display:flex; align-items:center; justify-content:space-between; gap: 16px; }
   .brand { display:flex; align-items:center; gap:12px; }
   .logo { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #3b82f6, #22c55e); box-shadow: 0 10px 30px rgba(59,130,246,.35); }
-  .brand strong {
-    color: var(--text-dark);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-  }
-  .tag {
-    background: var(--card);
-    border: 1px solid rgba(0,0,0,0.08);
-    color: var(--card-text);
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    display: inline-block;
-  }
   nav { display:flex; gap: 18px; font-weight: 600; }
-  nav a {
-    color: var(--text-dark);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-  }
+  nav a.active, nav a:hover { opacity: 1; }
 
-  /* === HERO === */
   .hero {
     display:grid;
     grid-template-columns: 1.2fr 1fr;
@@ -65,24 +51,34 @@
     align-items:center;
     padding: 48px 0;
   }
+
+  /* Gradient hero headline with subtle shadow */
   .hero h1 {
     font-size: clamp(28px, 4vw, 48px);
     line-height: 1.1;
     margin: 0 0 12px;
-    color: var(--text-dark);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 1.5px 4px rgba(0,0,0,0.4); /* softer than before */
   }
-  .sub {
-    color: var(--text-dark);
-    font-size: 18px;
+
+  /* Subheading and nav links also get light shadow */
+  .sub,
+  header,
+  footer,
+  nav a {
+    text-shadow: 0 1.5px 3px rgba(0,0,0,0.4);
   }
+
+  .sub { color: rgba(255,255,255,0.95); font-size: 18px; }
 
   .cta { display:flex; gap: 12px; margin-top: 22px; }
-  .btn { padding: 12px 16px; border-radius: 14px; font-weight: 700; border: 1px solid rgba(0,0,0,0.15); background: rgba(0,0,0,0.05); color: var(--text-dark); }
-  .btn.primary { background: linear-gradient(135deg, var(--accent1), var(--accent2)); border: none; color: #fff; box-shadow: 0 10px 30px rgba(37,99,235,.35); }
+  .btn { padding: 12px 16px; border-radius: 14px; font-weight: 700; border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.35); color: #fff; }
+  .btn.primary { background: linear-gradient(135deg, var(--accent1), var(--accent2)); border: none; box-shadow: 0 10px 30px rgba(37,99,235,.35); }
 
-  /* === GRID + CARDS === */
   .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
   .card {
     background: var(--card);
     border: 1px solid rgba(0,0,0,0.08);
@@ -96,64 +92,12 @@
   .card h3 { margin: 2px 0 8px; font-size: 18px; color: var(--card-text); }
   .card p { color: var(--muted); font-size: 14px; margin: 0; }
 
-  /* === SECTION HEADINGS === */
-  h2 {
-    color: var(--text-dark);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-    margin: 0 0 10px;
-  }
-
-  /* === FOOTER === */
-  footer { margin-top: 60px; display:flex; align-items:center; justify-content:space-between; font-size: 14px; }
-  footer, .social a {
-    color: var(--text-dark);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-  }
+  footer { margin-top: 60px; display:flex; align-items:center; justify-content:space-between; color: rgba(255,255,255,0.9); font-size: 14px; }
   .social { display:flex; gap: 12px; }
-  a[href^="mailto:"] { color: var(--text-dark); text-decoration: none; }
+  .tag { display:inline-block; padding: 6px 10px; border-radius: 999px; background: rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.25); color:#fff; font-size:12px; }
 
   @media (max-width: 900px){ .hero { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 640px){ .grid { grid-template-columns: 1fr; } nav { display:none; } }
-  /* ===== CLEANUP: remove any leftover local shading overlays ===== */
-header::before,
-.hero > div:first-child::before,
-footer::before {
-  content: none !important;
-  display: none !important;
-}
-
-/* ===== OUTSIDE-TEXT: subtle, consistent readability ===== */
-/* Name, nav, hero headline, section headings = light black + gentle shade */
-.brand strong,
-nav a,
-.hero h1,
-h2,
-footer,
-footer a {
-  color: #222 !important;
-  text-shadow: 0 1.5px 3px rgba(0,0,0,0.25) !important; /* soft, not aggressive */
-}
-
-/* Subheading line (“Corporate Planning @ …”) = clear light black, no shadow */
-.sub { color: #222 !important; text-shadow: none !important; }
-
-/* Header tag matches card style (light frosted + dark text) */
-.tag {
-  background: rgba(255,255,255,0.72) !important;
-  border: 1px solid rgba(0,0,0,0.08) !important;
-  color: #222 !important;
-}
-
-/* Cards stay light with dark text; body copy muted */
-.card { background: rgba(255,255,255,0.72) !important; color: #222 !important; }
-.card p { color: #555 !important; }
-
-/* Buttons: keep primary blue, neutral button readable */
-.btn { color: #222 !important; border-color: rgba(0,0,0,0.15) !important; background: rgba(0,0,0,0.05) !important; }
-.btn.primary { color: #fff !important; } /* CTA stays white text */
-
-/* Links (incl. email) use same color as surrounding text */
-a[href^="mailto:"], .card a, footer a { color: #222 !important; text-decoration: none; }
 </style>
 </head>
 <body>
