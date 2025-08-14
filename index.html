@@ -13,8 +13,6 @@
     --card: rgba(255, 255, 255, 0.70); /* light frosted background */
     --text-dark: #222;                 /* light black */
     --muted: #555;                     /* body copy inside cards */
-    --accent1: #3b82f6;                /* primary button gradient */
-    --accent2: #2563eb;
   }
 
   * { box-sizing: border-box; }
@@ -23,7 +21,7 @@
   body {
     margin: 0;
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    color: var(--text-dark);                 /* default = light black */
+    color: var(--text-dark);                 
     background-image: url("image.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -40,7 +38,14 @@
   /* ============ HEADER ============ */
   header { display:flex; align-items:center; justify-content:space-between; gap: 16px; }
   .brand { display:flex; align-items:center; gap:12px; }
-  .logo { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #3b82f6, #22c55e); box-shadow: 0 10px 30px rgba(59,130,246,.35); }
+  /* Gray gradient logo */
+  .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #cccccc, #888888);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
 
   /* Name: light black with subtle shade */
   .brand strong {
@@ -80,7 +85,7 @@
     padding: 48px 0;
   }
 
-  /* H1: light black with gentle shade (no gradient) */
+  /* H1: light black with gentle shade */
   .hero h1 {
     font-size: clamp(28px, 4vw, 48px);
     line-height: 1.1;
@@ -89,28 +94,28 @@
     text-shadow: 0 2px 4px rgba(0,0,0,0.22);
   }
 
-  /* Subheading: clear light black, minimal/no shadow */
+  /* Subheading: clear light black, minimal shadow */
   .sub {
     color: var(--text-dark);
     font-size: 18px;
     text-shadow: 0 1px 1.5px rgba(0,0,0,0.15);
   }
 
+  /* Buttons: both same frosted style */
   .cta { display:flex; gap: 12px; margin-top: 22px; }
   .btn {
     padding: 12px 16px;
     border-radius: 14px;
     font-weight: 700;
     border: 1px solid rgba(0,0,0,0.15);
-    background: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.55); /* frosted white */
     color: var(--text-dark);
     box-shadow: 0 10px 20px rgba(0,0,0,.08);
   }
   .btn.primary {
-    background: linear-gradient(135deg, var(--accent1), var(--accent2));
-    border: none;
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(37,99,235,.30);
+    background: rgba(255,255,255,0.55); /* same as GitHub button */
+    color: var(--text-dark);
+    box-shadow: 0 10px 20px rgba(0,0,0,.08);
   }
 
   /* ============ GRID + CARDS ============ */
@@ -142,7 +147,6 @@
   }
 
   /* ============ CONTACT / FOOTER ============ */
-  /* Email link matches surrounding text color */
   a[href^="mailto:"] { color: var(--text-dark); text-decoration: none; }
   a[href^="mailto:"]:hover { text-decoration: underline; }
 
