@@ -147,8 +147,15 @@
   }
 
   /* ============ CONTACT / FOOTER ============ */
-  a[href^="mailto:"] { color: var(--text-dark); text-decoration: none; }
-  a[href^="mailto:"]:hover { text-decoration: underline; }
+  /* Make label "Email:" and link identical */
+  #contact p, 
+  #contact p a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  #contact p a:hover { text-decoration: underline; }
 
   footer {
     margin-top: 60px;
